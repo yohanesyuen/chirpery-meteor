@@ -1,0 +1,11 @@
+<template name="usersList">
+  <ul>
+    {{#each users}}
+      {{> user}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="user">
+  <li><a href="users/{{username}}">{{username}}</a></li>
+</template>

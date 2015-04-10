@@ -1,0 +1,31 @@
+<template name="home">
+  <div class="container content">
+    {{#if currentUser}}
+      <div class="new-chirp container">
+        <h1>New Chirp</h1>
+        {{> newChirpForm }}
+      </div>
+    {{/if}}
+
+    <div class="chirp-feed container">
+    {{> chirpFeed}}
+    </div>
+
+  </div>
+</template>
+
+<template name='newChirpForm'>
+  <form class="compose-chirp">
+    <div class="form-group">
+      <textarea class="form-control chirp-body" name="body">{{text}}</textarea>
+    </div>
+    <div class="form-group">
+      {{#if characterLimitExceeded}}
+      <span class="pull-left text-danger">{{charactersOver}} characters too many...</span>
+      {{else}}
+      <span class="pull-left text-muted">{{charactersLeft}} characters left</span>
+      {{/if}}
+      <button type="submit" class="btn btn-default pull-right chirp-submit">Submit!</button>
+    </div>
+  </form>
+</template>
