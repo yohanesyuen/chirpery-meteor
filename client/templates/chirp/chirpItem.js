@@ -16,7 +16,7 @@ Template.chirpItem.helpers({
       var rightHTML = formattedBody.substring(mentionEndIndex);
       var mentionString = formattedBody.substring(mentionStartIndex, mentionEndIndex);
       console.log(mention);
-      var mentionHTML = '<a href="/users/' + mention.screenName + '">' + mentionString + '</a>'
+      var mentionHTML = '<a href="/' + mention.screenName + '">' + mentionString + '</a>'
       formattedBody = leftHTML + mentionHTML + rightHTML;
     }
 
