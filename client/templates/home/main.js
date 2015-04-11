@@ -6,12 +6,16 @@ Template.home.events({
         target = event.target;
     data.body = target.body.value;
     Meteor.call('chirps.create', data);
-    target.value = "";
+    target.body.value = "";
     return false;
   }
 });
 
 Template.newChirpForm.helpers({
+  submitDisabled : function () {
+    var charLeft = Template.instance().charactersLeft.get();
+    return charLeft === 140 || charLeft < 0  ? "disabled" : "";
+  },
   charactersLeft : function () {
     return Template.instance().charactersLeft.get();
   },
