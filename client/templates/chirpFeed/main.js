@@ -4,10 +4,3 @@ Template.chirpFeed.helpers({
     return chirps;
   }
 });
-
-Template.chirp.helpers({
-  prettyCreationDate: function() {
-    console.log(this.createdAt);
-    return moment(this.createdAt).fromNow();
-  }
-});

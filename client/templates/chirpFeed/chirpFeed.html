@@ -2,13 +2,7 @@
   <h1>Chirps</h1>
   {{#each chirps}}
   <div class="chirp">
-    {{> chirp}}
+    {{> chirpItem}}
   </div>
   {{/each}}
-</template>
-
-<template name="chirp">
-  <div class="chirp-author"><a href="/users/{{username}}">{{username}}</a></div>
-  <div class="chirp-body">{{body}}</div>
-  <div class="chirp-creation-time">{{prettyCreationDate}}</div>
 </template>
