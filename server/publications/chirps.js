@@ -1,3 +1,5 @@
 Meteor.publish('chirps', function () {
-  return Chirps.find();
+  var chirps = Chirps.find();
+
+  return chirps;
 });
