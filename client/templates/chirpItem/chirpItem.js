@@ -13,7 +13,7 @@ var autoLinkMentions = function(text, entities, options) {
   var startIndex = 0;
   var result = "";
 
-  for (in in userMentions) {
+  for (i in userMentions) {
     var mention = userMentions[i];
     result += text.substring(startIndex, mention.indices[0]);
     result += linkToMention(mention, text);
