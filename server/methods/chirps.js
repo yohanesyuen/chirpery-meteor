@@ -13,13 +13,13 @@ Meteor.methods({
 
     var entities = {};
 
-    entities.userMentions = chirpery.txt.extractMentionEntitiesFromText(body);
+    var mentions = chirpery.txt.extractMentionEntitiesFromText(body);
 
-    entities['user_mentions'] = chirpery.txt.extractMentionEntitiesFromText(body);
+    entities.userMentions = mentions
 
-    console.log(JSON.stringify(mentions));
+    entities['user_mentions'] = mentions;
 
-    Chirps.insert({
+    var chirp = Chirps.insert({
       owner: Meteor.userId(),
       username: Meteor.user().username,
 
@@ -27,5 +27,18 @@ Meteor.methods({
       entities : entities,
       createdAt: new Date()
     });
+
+    if (mentions.length > 0) {
+      for (i in mentions) {
+        var mention = mentions[i];
+        Events.insert({
+          type : 'mention',
+          creator : Meteor.userId(),
+          recipient : mention.id,
+          chirp : chirp,
+          viewed : false
+        });
+      }
+    }
   }
 });
